@@ -6,6 +6,7 @@ Deepl Key is safed.
 """
 
 from interface_and_features import vocabulary_interface
+import os
 from prepare_application import (
     check_for_dictionaries,
     get_deepl_key
@@ -13,7 +14,8 @@ from prepare_application import (
 
 if __name__ == '__main__':
     # Path to Deepl Key file
-    key_path = r"C:\Users\Irem\Desktop\Irem_Final_project\DeeplKey.txt"
+    dirname = os.path.dirname(__file__)
+    key_path = os.path.join(dirname, 'DeeplKey.txt')
 
     # Get a Deepl Key form key_path file, if possible
     deepl_auth_key = get_deepl_key(file_path=key_path)
