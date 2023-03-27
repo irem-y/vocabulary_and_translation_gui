@@ -46,6 +46,16 @@ def translate_string(auth_key="", in_text="", src_lang="", tgt_lang=""):
         "text": "No text to tranlsate were found.",
         "lang": "Target Language is unknown."
     }
+    # Convert language abbreviations to required format
+    try:
+        input_lang = convert_abbreviation(src_lang, "src")
+    except TypeError:
+        return
+    try:
+        output_lang = convert_abbreviation(tgt_lang, "tgt")
+    except TypeError:
+        return
+
     # Initialize the translator object with the authentication key
     translator = deepl.Translator(auth_key)
 
@@ -53,8 +63,8 @@ def translate_string(auth_key="", in_text="", src_lang="", tgt_lang=""):
     # the input string with the specified source and target languages
     try:
         result = translator.translate_text(
-            in_text, source_lang=src_lang,
-            target_lang=tgt_lang
+            in_text, source_lang=input_lang,
+            target_lang=output_lang
         )
     except deepl.exceptions.AuthorizationException:
         # If the provided authentication key is invalid or unauthorized,

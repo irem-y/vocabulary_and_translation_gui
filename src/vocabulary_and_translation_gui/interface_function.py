@@ -3,11 +3,11 @@ Function for creating an user interface and the functions for the buttons.
 
 Functions:
 - vocabulary_interface(deepl_key)
-- translate_button(key, in_text, src_lang, tgt_lang, enter_field,
+- handel_translate(key, in_text, src_lang, tgt_lang, enter_field,
                    translation_field)
-- add_word_button(key, in_text, src_lang, enter_field, translation_field,
+- handel_add_to_list(key, in_text, src_lang, enter_field, translation_field,
                   trans_list_field, trans_list)
-- save_button(vocabulary_list)
+- handel_save(vocabulary_list)
 """
 
 import datetime
@@ -23,8 +23,7 @@ from save_functions import (
 )
 from translation_functions import (
     translate_string,
-    check_spelling,
-    convert_abbreviation
+    check_spelling
 )
 
 
@@ -215,20 +214,10 @@ def handel_translate(key="", in_text="", src_lang="", tgt_lang="",
         enter_field.delete(0, tk.END)
         enter_field.insert(0, correct_text)
 
-        # Convert language abbreviations to required format
-        try:
-            input_lang = convert_abbreviation(src_lang, "src")
-        except TypeError:
-            return
-        try:
-            output_lang = convert_abbreviation(tgt_lang, "tgt")
-        except TypeError:
-            return
-
         # Translate input text
         try:
             output = translate_string(key, correct_text,
-                                      input_lang, output_lang)
+                                      src_lang, tgt_lang)
         except ValueError:
             return
 
@@ -321,13 +310,7 @@ def handel_add_to_list(key="", in_text="", src_lang="", enter_field=None,
             return
 
         # List of abbreviated languages for translation
-        abbr_list = ["EN-GB", "DE", "TR"]
-
-        # Convert source language to its abbreviation
-        try:
-            input_lang = convert_abbreviation(src_lang, "src")
-        except TypeError:
-            return
+        language_list = ["English", "Deutsch", "Türkçe"]
 
         # Get current upload list and add new word to it
         translation_list_str = str(trans_list_field.cget("text"))
@@ -336,12 +319,12 @@ def handel_add_to_list(key="", in_text="", src_lang="", enter_field=None,
         else:
             translation_list_str += "\n"
 
-        # Translate the entered word to each language in the abbr_list
+        # Translate the entered word to each language in the language_list
         # and add the translations to the upload list string
         tmp_word_list = []
-        for lang in abbr_list:
+        for lang in language_list:
             try:
-                output = translate_string(key, correct_text, input_lang, lang)
+                output = translate_string(key, correct_text, src_lang, lang)
             except ValueError:
                 return
             tmp_word_list.append(output[0])
