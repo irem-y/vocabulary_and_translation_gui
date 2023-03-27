@@ -1,0 +1,6 @@
+@Unpublished{vocabulary_and_translation_gui2023,
+    Title  = {A project to create a GUI where a user can enter a word or phrase. This expression can be translated to and from German, English and Turkish. The expression can be saved in an Excel or Anki file so that it can be learned as a vocabulary.},
+    Author = {Ayse Irem Yilmaz},
+    Year   = {2023},
+    Url    = {https://github.com/irem-y/vocabulary_and_translation_gui}
+}
