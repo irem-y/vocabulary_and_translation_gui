@@ -2,7 +2,6 @@
 All functions for saving a word list.
 
 Functions:
-- save_button(vocabulary_list)
 - save_apkg(word_list, path)
 - save_xlsx(word_list, path)
 """
@@ -11,89 +10,7 @@ import genanki
 import os
 import pandas as pd
 import random
-from tkinter import (
-    filedialog,
-    messagebox
-)
-
-
-def save_button(vocabulary_list=[]):
-    """
-    Save the vocabulary list as an Anki or Excel file.
-
-    Args:
-    - vocabulary_list (list): List of tuples containing English, German,
-    and Turkish words.
-
-    Returns:
-    - None
-    """
-    # Define titles and messages for the message boxes
-    messages = {
-        "info": ("If an existing file is selected, a window will appear "
-                 "asking if the file should be replaced. If 'yes' is "
-                 "selected, Anki (.apkg) files will be replaced and Excel "
-                 "(.xlsx) files will be appended."),
-        "filetype": "Please choose .xlsx or .apkg as file type.",
-        "path": "No path selected.",
-        "empty": "No words to add were found."
-    }
-
-    titles = {
-        "info": "Information",
-        "filetype": "Save the file as an Anki or Excel file",
-        "path": "Warning",
-        "empty": "Save not successful"
-    }
-
-    # Check if there are words in the vocabulary list
-    if not vocabulary_list:
-        messagebox.showwarning(title=titles["empty"],
-                               message=messages["empty"])
-        return
-
-    # Display the "replace" information message
-    messagebox.showinfo(title=titles["info"], message=messages["info"])
-
-    while True:
-        # Open a dialog box to get a file name and path
-        file_path = filedialog.asksaveasfilename(
-            title=titles["filetype"],
-            initialdir="./",
-            filetypes=[
-                ("Anki file (.apkg)", "*.apkg"),
-                ("Excel file (.xlsx)", "*.xlsx"),
-                ("All files", "*.*")
-            ],
-            defaultextension=".apkg",
-            initialfile="vocabulary_list"
-        )
-
-        # Check if a file path was provided
-        if not file_path:
-            # If no path was selected, ask the user to retry or cancel
-            if not messagebox.askretrycancel(title=titles["path"],
-                                             message=messages["path"]):
-                break
-            continue
-
-        # Get the extension of the selected file
-        extension = os.path.splitext(file_path)[1].lower()
-
-        if extension == ".apkg":
-            # Call a function to save the vocabulary list as an Anki file
-            save_apkg(vocabulary_list, file_path)
-            break
-        elif extension == ".xlsx":
-            # Call a function to save the vocabulary list as an Excel file
-            save_xlsx(vocabulary_list, file_path)
-            break
-        else:
-            # If the extension is unsupported, ask the user to retry or cancel
-            if not messagebox.askretrycancel(title=titles["filetype"],
-                                             message=messages["filetype"]):
-                break
-            continue
+from tkinter import messagebox
 
 
 def save_apkg(word_list=[], path=""):
