@@ -2,8 +2,8 @@
 All functions for preparing the application.
 
 Functions:
-- check_for_dicts(dicts)
-- check_for_deepl_key(fiel_path)
+- check_for_dictionaries(dicts)
+- get_deepl_key(fiel_path)
 """
 
 import enchant
@@ -11,7 +11,7 @@ import os
 from tkinter import messagebox
 
 
-def check_for_dicts(dicts=[]):
+def check_for_dictionaries(dicts=[]):
     """Check if needed dictionarys for enchantment exist.
 
     Args:
@@ -67,7 +67,7 @@ def check_for_dicts(dicts=[]):
         return True
 
 
-def check_for_deepl_key(file_path=""):
+def get_deepl_key(file_path=""):
     """Find the Deepl Auth Key.
 
     Args:

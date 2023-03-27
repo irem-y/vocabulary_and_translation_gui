@@ -3,11 +3,11 @@ Function for creating an user interface and the functions for the buttons.
 
 Functions:
 - vocabulary_interface(deepl_key)
-- handel_translate(key, in_text, src_lang, tgt_lang, enter_field,
+- handle_translate(key, in_text, src_lang, tgt_lang, enter_field,
                    translation_field)
-- handel_add_to_list(key, in_text, src_lang, enter_field, translation_field,
+- handle_add_to_list(key, in_text, src_lang, enter_field, translation_field,
                   trans_list_field, trans_list)
-- handel_save(vocabulary_list)
+- handle_save(vocabulary_list)
 """
 
 import datetime
@@ -17,11 +17,11 @@ from tkinter import (
     filedialog,
     messagebox
 )
-from save_functions import (
-    save_apkg,
-    save_xlsx
+from save_list import (
+    save_list_as_apkg,
+    save_list_as_xlsx
 )
-from translation_functions import (
+from translation_and_spelling import (
     translate_string,
     check_spelling
 )
@@ -94,7 +94,7 @@ def vocabulary_interface(deepl_key=""):
 
     # Add a button to translate user input
     trans_button = tk.Button(user_interface, text='Translate',
-                             command=lambda: handel_translate(
+                             command=lambda: handle_translate(
                                                 deepl_key,
                                                 entry_field.get(),
                                                 src_lang_sel.get(),
@@ -107,7 +107,7 @@ def vocabulary_interface(deepl_key=""):
 
     # Add a button to add user input to vocabulary list
     add_button = tk.Button(user_interface, text='Add to vocabulary list',
-                           command=lambda: handel_add_to_list(
+                           command=lambda: handle_add_to_list(
                                                 deepl_key,
                                                 entry_field.get(),
                                                 src_lang_sel.get(),
@@ -121,7 +121,7 @@ def vocabulary_interface(deepl_key=""):
 
     # Add a button to save vocabulary list to a file
     save_file_button = tk.Button(user_interface, text='Save vocabulary list',
-                                 command=lambda: handel_save(new_vocabularies))
+                                 command=lambda: handle_save(new_vocabularies))
     save_file_button.pack(side=tk.LEFT, padx=5, pady=5)
 
     # Add a button to quit the program
@@ -133,7 +133,7 @@ def vocabulary_interface(deepl_key=""):
     user_interface.mainloop()
 
 
-def handel_translate(key="", in_text="", src_lang="", tgt_lang="",
+def handle_translate(key="", in_text="", src_lang="", tgt_lang="",
                      enter_field=None, translation_field=None):
     """
     Translate the input text and displays the result in the translation_field.
@@ -235,7 +235,7 @@ def handel_translate(key="", in_text="", src_lang="", tgt_lang="",
         translation_field.configure(text="No word entered. Please try again.")
 
 
-def handel_add_to_list(key="", in_text="", src_lang="", enter_field=None,
+def handle_add_to_list(key="", in_text="", src_lang="", enter_field=None,
                        translation_field=None, trans_list_field=None,
                        trans_list=[]):
     """
@@ -351,7 +351,7 @@ def handel_add_to_list(key="", in_text="", src_lang="", enter_field=None,
         translation_field.configure(text="No word entered. Please try again.")
 
 
-def handel_save(vocabulary_list=[]):
+def handle_save(vocabulary_list=[]):
     """
     Save the vocabulary list as an Anki or Excel file.
 
@@ -416,11 +416,11 @@ def handel_save(vocabulary_list=[]):
 
         if extension == ".apkg":
             # Call a function to save the vocabulary list as an Anki file
-            save_apkg(vocabulary_list, file_path)
+            save_list_as_apkg(vocabulary_list, file_path)
             break
         elif extension == ".xlsx":
             # Call a function to save the vocabulary list as an Excel file
-            save_xlsx(vocabulary_list, file_path)
+            save_list_as_xlsx(vocabulary_list, file_path)
             break
         else:
             # If the extension is unsupported, ask the user to retry or cancel

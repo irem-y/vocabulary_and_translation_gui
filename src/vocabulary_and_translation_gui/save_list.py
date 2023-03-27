@@ -2,8 +2,8 @@
 All functions for saving a word list.
 
 Functions:
-- save_apkg(word_list, path)
-- save_xlsx(word_list, path)
+- save_list_as_apkg(word_list, path)
+- save_list_as_xlsx(word_list, path)
 """
 
 import genanki
@@ -13,7 +13,7 @@ import random
 from tkinter import messagebox
 
 
-def save_apkg(word_list=[], path=""):
+def save_list_as_apkg(word_list=[], path=""):
     """
     Save the given word list as an Anki (.apkg) file at the given path.
 
@@ -107,7 +107,7 @@ def save_apkg(word_list=[], path=""):
     messagebox.showinfo(title=titles["success"], message=messages["success"])
 
 
-def save_xlsx(word_list=[], path=""):
+def save_list_as_xlsx(word_list=[], path=""):
     """
     Save a list of words in an Excel file located in the specified path.
 

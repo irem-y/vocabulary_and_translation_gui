@@ -3,9 +3,9 @@ All functions for translating and correcting expressions.
 
 Functions:
 - translate_string(auth_key, in_text, src_lang, tgt_lang)
-- convert_abbreviation(abbr, style)
+- convert_language_name(abbr, style)
 - check_spelling(in_text, lang)
-- replace_wrong_words(in_text, dic_lang)
+- correct_spelling_mistakes(in_text, dic_lang)
 """
 
 import deepl
@@ -48,11 +48,11 @@ def translate_string(auth_key="", in_text="", src_lang="", tgt_lang=""):
     }
     # Convert language abbreviations to required format
     try:
-        input_lang = convert_abbreviation(src_lang, "src")
+        input_lang = convert_language_name(src_lang, "src")
     except TypeError:
         return
     try:
-        output_lang = convert_abbreviation(tgt_lang, "tgt")
+        output_lang = convert_language_name(tgt_lang, "tgt")
     except TypeError:
         return
 
@@ -86,7 +86,7 @@ def translate_string(auth_key="", in_text="", src_lang="", tgt_lang=""):
     return result.text, result.detected_source_lang
 
 
-def convert_abbreviation(abbr="", style=""):
+def convert_language_name(abbr="", style=""):
     """Convert a language name abbreviation to a specific format.
 
     The `abbr` parameter should be a string containing the full name of the
@@ -159,7 +159,7 @@ def check_spelling(in_text="", lang=""):
     try:
         # For each word in the split text, replace any incorrect spelling with
         # a corrected version using the specified language
-        correct_text_lst = [replace_wrong_words(word, lang)
+        correct_text_lst = [correct_spelling_mistakes(word, lang)
                             for word in split_text]
     except ValueError:
         # If a value error is raised when calling replace_wrong_words, raise
@@ -196,7 +196,7 @@ def check_spelling(in_text="", lang=""):
         return in_text
 
 
-def replace_wrong_words(in_text="", dic_lang=""):
+def correct_spelling_mistakes(in_text="", dic_lang=""):
     """
     Replace misspelled words with the most likely correct spelling.
 
@@ -226,7 +226,7 @@ def replace_wrong_words(in_text="", dic_lang=""):
     # Create a dictionary checker for the specified language, if no dictionary
     # is found return the input sting
     try:
-        dictionary_language = convert_abbreviation(dic_lang, "dic")
+        dictionary_language = convert_language_name(dic_lang, "dic")
     except TypeError:
         return
 
