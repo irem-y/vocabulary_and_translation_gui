@@ -169,7 +169,7 @@ class TestSaveListAsXlsx:
         - tmp_path (pathlib.WindowsPath): the temporary path to save the file
         - word_list (list): the input list consisting of three strings and a
         timestamp
-        - expected_len (int): The expected number of entrys of the file
+        - expected_len (int): The expected number of entries of the file
 
         Raises:
         - AssertionError: if the output of the function does not match the

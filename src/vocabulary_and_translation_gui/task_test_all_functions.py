@@ -1,8 +1,8 @@
 """
 A task to execute pytest for all test functions in the folder "tests".
 
-The dependencies are the test files and the files with the funcitons that are
-tested. If a new funciton or test funciton is created, add the file name here.
+The dependencies are the test files and the files with the functions that are
+tested. If a new function or test function is created, add the file name here.
 """
 
 import os
@@ -18,7 +18,7 @@ function_names = [
     "translation_and_spelling.py"
 ]
 
-# Paht and name of test funcitons
+# Path and name of test functions
 test_path = os.path.join(function_path, "..", "..", "tests")
 test_names = [
     "test_import.py",

@@ -28,7 +28,7 @@ def save_list_as_apkg(word_list=[], path=""):
     # Messages and titles for the message boxes shown to the user
     messages = {
         "empty": "No words to save were found.",
-        "four": ("There have to be exactly four entries in each entrie of"
+        "four": ("There have to be exactly four entries in each entry of"
                  + " word_list."),
         "error": ("Error: This program doesn't have access to this path: "
                   + path),
@@ -55,7 +55,7 @@ def save_list_as_apkg(word_list=[], path=""):
             messagebox.showwarning(title=titles["four"],
                                    message=messages["four"])
             return
-    # If the directory for the file not exist, a new directoy get created
+    # If the directory for the file not exist, a new directory get created
     if not os.path.exists(os.path.dirname(path)):
         os.makedirs(os.path.dirname(path))
 
@@ -125,7 +125,7 @@ def save_list_as_xlsx(word_list=[], path=""):
     # Messages and titles for the message boxes shown to the user
     messages = {
         "empty": "No words to save were found.",
-        "four": ("There have to be exactly four entries in each entrie of "
+        "four": ("There have to be exactly four entries in each entry of "
                  + "word_list."),
         "error": ("Error: The Excel file in the path:" + path + "is either"
                   "being opened by another application and must be closed,"
@@ -153,22 +153,22 @@ def save_list_as_xlsx(word_list=[], path=""):
                                    message=messages["four"])
             return
 
-    # If the directory for the file not exist, a new directoy get created
+    # If the directory for the file not exist, a new directory get created
     if not os.path.exists(os.path.dirname(path)):
         os.makedirs(os.path.dirname(path))
 
-    # Create a pandas dataframe with the word_list data
+    # Create a pandas data frame with the word_list data
     df = pd.DataFrame(word_list,
                       columns=['English', 'Deutsch', 'Türkçe', 'Timestamp'])
 
-    # Set the 'Timestamp' column as the index of the dataframe
+    # Set the 'Timestamp' column as the index of the data frame
     df.set_index('Timestamp', inplace=True, drop=True)
 
     # Check if the Excel file already exists in the specified path
     if os.path.exists(path):
         while True:
             try:
-                # Open the Excel file in append mode and write the dataframe
+                # Open the Excel file in append mode and write the data frame
                 with pd.ExcelWriter(path,
                                     mode='a',
                                     engine="openpyxl",
@@ -191,7 +191,7 @@ def save_list_as_xlsx(word_list=[], path=""):
                                     message=messages["success"])
                 break
     else:
-        # If the Excel file does not exist, create it and write the dataframe
+        # If the Excel file does not exist, create it and write the data frame
         df.to_excel(path, sheet_name='Vocabulary')
         messagebox.showinfo(title=titles["success"],
                             message=messages["success"])

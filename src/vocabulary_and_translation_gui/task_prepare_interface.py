@@ -1,7 +1,8 @@
 """
 Two task for  "check_for_dictionaries" and "get_deepl_key".
 
-THe tasks produce output files to document the succes or failure ot the checks.
+The tasks produce output files to document the success or failure of the
+checks.
 """
 
 from vocabulary_and_translation_gui.config import BLD
@@ -26,7 +27,7 @@ def task_get_key(depends_on, produces):
     not.
 
     Args:
-    - depends_on (path): Path of the Deepl Key file
+    - depends_on (path): Path of the DeepL Key file
     - produces (path): Path for the output file
 
     Returns:
@@ -48,7 +49,7 @@ def task_get_key(depends_on, produces):
     )
 )
 @pytask.mark.produces(BLD / "dicts_check_result.txt")
-def task_check_dictionaires(depends_on, produces):
+def task_check_dictionaries(depends_on, produces):
     """
     Check if the dictionaries in depends_on are available in the enchant lib.
 

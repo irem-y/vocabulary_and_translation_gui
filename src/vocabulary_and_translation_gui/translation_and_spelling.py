@@ -36,14 +36,14 @@ def translate_string(auth_key="", in_text="", src_lang="", tgt_lang=""):
     """
     # Creating Titles and messages for the errors
     titles = {
-        "auth": "Wrong authentification Key",
+        "auth": "Wrong authentication Key",
         "text": "Text needed",
         "lang": "Unknown target language"
     }
     messages = {
-        "auth": ("The provided Deepl authentication key is invalid or "
+        "auth": ("The provided DeepL authentication key is invalid or "
                  + "unauthorized."),
-        "text": "No text to tranlsate were found.",
+        "text": "No text to translate were found.",
         "lang": "Target Language is unknown."
     }
     # Convert language abbreviations to required format
@@ -127,7 +127,7 @@ def convert_language_name(abbr="", style=""):
         return ""
     except TypeError:
         # If abbr or style has an unhashable type, show an error message
-        msg = "The language name and abbrevation style has to be strings!"
+        msg = "The language name and abbreviation style has to be strings!"
         messagebox.showerror(title="Wrong parameter types", message=msg)
         raise TypeError("The input parameters have to be strings!")
 
@@ -232,7 +232,7 @@ def correct_spelling_mistakes(in_text="", dic_lang=""):
 
     # Check if the needed dictionary exist
     try:
-        txt_chkr = enchant.Dict(dictionary_language)
+        txt_checker = enchant.Dict(dictionary_language)
     except enchant.errors.DictNotFoundError:
         return in_text
 
@@ -241,7 +241,7 @@ def correct_spelling_mistakes(in_text="", dic_lang=""):
 
     # Check if word is spelled correct
     try:
-        word_is_correct = txt_chkr.check(in_text)
+        word_is_correct = txt_checker.check(in_text)
     except enchant.errors.Error:
         return in_text
 
@@ -251,7 +251,7 @@ def correct_spelling_mistakes(in_text="", dic_lang=""):
         return in_text
     else:
         # If the word is misspelled, suggest the most likely correct spelling
-        correct = txt_chkr.suggest(in_text)
+        correct = txt_checker.suggest(in_text)
 
         # If there is at least one suggestion, return the first one
         if len(correct) > 0:

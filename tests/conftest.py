@@ -3,7 +3,7 @@ Configuration for pytest.
 
 The function allows the user to enter a Path to the file where the DeepL
 Authentication Key is stored. This Key will be used in the test
-functions that test translation funcitonalities.
+functions that test translation functionalities.
 """
 import os
 

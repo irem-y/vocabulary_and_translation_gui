@@ -46,7 +46,7 @@ def vocabulary_interface(deepl_key=""):
 
     # Create a tkinter instance
     user_interface = tk.Tk()
-    user_interface.title('Translater & Vocabulary interface')
+    user_interface.title('Translator & Vocabulary interface')
 
     # Add a label for the user input field
     tk.Label(user_interface, text="Your Expression:").pack()

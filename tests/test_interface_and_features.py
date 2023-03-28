@@ -52,16 +52,16 @@ class TestHandleAddToList:
         """
         Test the "handle_add_to_list" function with valid inputs.
 
-        The expected ouptut is the input text with its translations added as a
+        The expected output is the input text with its translations added as a
         list to the trans_list
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - expected (str): the expected output for the given input
         - expected_len (int): expected length of the trans_list
-        - trans_list (list[list]): the current wordlist
+        - trans_list (list[list]): the current word list
 
         Raises:
         - AssertionError: if the output of the function does not match the
@@ -90,15 +90,15 @@ class TestHandleAddToList:
         """
         Test the "handle_add_to_list" function with invalid inputs.
 
-        The expected ouptut None
+        The expected output None
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - expected (str): the expected output for the given input
         - expected_len (int): expected length of the trans_list
-        - trans_list (list[list]): the current wordlist
+        - trans_list (list[list]): the current word list
 
         Raises:
         - AssertionError: if the output of the function does not match the
@@ -242,11 +242,11 @@ class TestHandleTranslate:
         """
         Test the "handle_translate" function with valid inputs.
 
-        The expected ouptut is the translated word and the language of the
+        The expected output is the translated word and the language of the
         base word.
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - tgt_lang (str): the target language for the translation
@@ -271,10 +271,10 @@ class TestHandleTranslate:
         """
         Test the "handle_translate" function with invalid inputs.
 
-        The expected ouptut is an empty string.
+        The expected output is an empty string.
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - tgt_lang (str): the target language for the translation
@@ -295,10 +295,10 @@ class TestHandleTranslate:
         """
         Test the "handle_translate" function with an empty text.
 
-        The expected ouptut is an message that there is no text.
+        The expected output is an message that there is no text.
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
 
         Raises:
         - AssertionError: if the output of the function does not match the
@@ -325,13 +325,13 @@ class TestHandleTranslate:
         """
         Test the "handle_translate" function with incorrect written text.
 
-        The expected ouptut is a translation and a corrected entry field if
+        The expected output is a translation and a corrected entry field if
         "yes" is selected in the messagebox, a translation and a not corrected
         entry filed it "no is selected and an empty strings if the "cancel"
         is selected
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - tgt_lang (str): the target language for the translation

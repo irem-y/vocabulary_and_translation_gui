@@ -46,7 +46,7 @@ class TestConvertLanguageName:
         """
         Test the "convert_language_name" function with valid inputs.
 
-        The expected output is the correct abbrevation.
+        The expected output is the correct abbreviation.
 
         Args:
         - abbr (str): the language abbreviation to convert
@@ -137,7 +137,7 @@ class TestCorrectSpellingMistakes:
         """
         Test the "correct_spelling_mistakes" function without mistakes.
 
-        The expected ouptut is the input word.
+        The expected output is the input word.
 
         Args:
         - in_text (str): the word to check and correct
@@ -256,7 +256,7 @@ class TestCheckSpelling:
         """
         Test the "check_spelling" function with correct written expressions.
 
-        The expected ouptut is the input word.
+        The expected output is the input word.
 
         Args:
         - in_text (str): the word to check and correct
@@ -278,7 +278,7 @@ class TestCheckSpelling:
         Test the "check_spelling" function with incorrect written expressions.
 
         The expected output is the corrected expression if "yes" is selected
-        in the messagebox, the input expression if "no" is selscted, and a
+        in the messagebox, the input expression if "no" is selected, and a
         ValueError if the "cancel is selected.
 
         Args:
@@ -335,7 +335,7 @@ class TestCheckSpelling:
         """
         Test the "check_spelling" function with a unknown language.
 
-        The expected ouptut is the input word.
+        The expected output is the input word.
 
         Args:
         - in_text (str): the word to check and correct
@@ -365,7 +365,7 @@ class TestTranslateString:
         - test_invalid_inputs: Test the "test_invalid_inputs" function with
         invalid inputs.
         - test_invalid_key: Test the "test_invalid_inputs" function with wrong
-        Deepl Key.
+        DeepL Key.
     """
     @pytest.mark.parametrize("in_text, src_lang, tgt_lang, expected", [
         ("Baum", "Deutsch", "English", ("Tree", "DE")),
@@ -381,11 +381,11 @@ class TestTranslateString:
         Test the "test_valid_inputs" function with valid inputs.
 
         The test runs with the source language provided and not provided.
-        The expected ouptut is the translated word and the language of the
+        The expected output is the translated word and the language of the
         base word.
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - tgt_lang (str): the target language for the translation
@@ -402,7 +402,7 @@ class TestTranslateString:
                                 src_lang="", tgt_lang=tgt_lang) == expected
 
     @pytest.mark.parametrize("in_text, src_lang, tgt_lang, error_msg", [
-        ("", "Deutsch", "English", "No text to tranlsate were found."),
+        ("", "Deutsch", "English", "No text to translate were found."),
         ("Tree", "English", "abc", "Target Language is unknown."),
     ])
     def test_invalid_inputs(self, auth_key, in_text, src_lang, tgt_lang,
@@ -410,11 +410,11 @@ class TestTranslateString:
         """
         Test the "test_invalid_inputs" function with invalid inputs.
 
-        The expected ouptut is a raised ValueError with a message based on the
+        The expected output is a raised ValueError with a message based on the
         missing or wrong parameter.
 
         Args:
-        - auth_key (str): the key for the Deepl API
+        - auth_key (str): the key for the DeepL API
         - in_text (str): the word to check and correct
         - src_lang (str): the language of the expression
         - tgt_lang (str): the target language for the translation
@@ -431,9 +431,9 @@ class TestTranslateString:
 
     def test_invalid_key(self):
         """
-        Test the "test_invalid_inputs" function with wrong Deepl Key.
+        Test the "test_invalid_inputs" function with wrong DeepL Key.
 
-        The expected ouptut is a raised ValueError.
+        The expected output is a raised ValueError.
 
         Args:
         - None
@@ -444,7 +444,7 @@ class TestTranslateString:
         """
         with patch("tkinter.messagebox.showerror", return_value=True):
             with pytest.raises(ValueError,
-                               match=("The provided Deepl authentication key"
+                               match=("The provided DeepL authentication key"
                                       + " is invalid or unauthorized.")):
                 translate_string(auth_key="abc", in_text="Tree", src_lang="EN",
                                  tgt_lang="DE")
