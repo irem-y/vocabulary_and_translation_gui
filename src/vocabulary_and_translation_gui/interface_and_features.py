@@ -17,11 +17,11 @@ from tkinter import (
     filedialog,
     messagebox
 )
-from save_list import (
+from vocabulary_and_translation_gui.save_list import (
     save_list_as_apkg,
     save_list_as_xlsx
 )
-from translation_and_spelling import (
+from vocabulary_and_translation_gui.translation_and_spelling import (
     translate_string,
     check_spelling
 )
