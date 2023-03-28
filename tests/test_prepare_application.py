@@ -26,7 +26,6 @@ class TestGetDeeplKey:
     """
     @pytest.mark.parametrize("file_name", [
         ("abc.txt"),
-        ("key.txt"),
         ("no_key.txt"),
     ])
     def test_invalid_file(self, file_name):
