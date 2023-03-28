@@ -75,46 +75,42 @@ class TestCheckForDictionaries:
 
     Methods:
         - test_existing_dicts: Test the "check_for_dictionaries" function for
-        empty input and existing dicts.
+        existing dicts.
         - test_non_existing: Test the "check_for_dictionaries" for not
         existing dicts.
     """
-    @pytest.mark.parametrize("dicts", [
-        (["en_GB"]),
-        (["en_US"]),
-    ])
-    def test_existing_dicts(self, dicts):
+
+    def test_existing_dicts(self):
         """
         Test the "check_for_dictionaries" function for existing dicts.
 
         The expected output is True.
 
         Args:
-        - dicts (list[str]): the names the dictionaries
+        - None
 
         Raises:
         - AssertionError: if the output of the function does not match the
         expected value
         """
-        assert check_for_dictionaries(dicts=dicts) is True
+        path = os.path.join(os.path.dirname(__file__), "test_files",
+                            "test_dicts_exist")
+        assert check_for_dictionaries(dictionaries_path=path) is True
 
-    @pytest.mark.parametrize("dicts", [
-        (["NotReal"]),
-        (["NotExisting"]),
-        ([""]),
-    ])
-    def test_non_existing(self, dicts):
+    def test_non_existing(self):
         """
         Test the "check_for_dictionaries" for not existing dicts.
 
         The expected output is False.
 
         Args:
-        - dicts (list[str]): the names the dictionaries
+        - None
 
         Raises:
         - AssertionError: if the output of the function does not match the
         expected value
         """
+        path = os.path.join(os.path.dirname(__file__), "test_files",
+                            "test_dicts_not_exist")
         with patch("tkinter.messagebox.showwarning", return_value=True):
-            assert check_for_dictionaries(dicts=dicts) is not True
+            assert check_for_dictionaries(dictionaries_path=path) is not True

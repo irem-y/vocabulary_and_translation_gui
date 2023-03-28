@@ -23,14 +23,11 @@ if __name__ == '__main__':
     # Get a Deepl Key form key_path file, if possible
     deepl_auth_key = get_deepl_key(file_path=key_path)
 
-    # Needed Dictionarys
-    dictionarys = [
-        "tr_TR",
-        "de_DE",
-        "en_GB"
-    ]
+    # Path to the needed dictionaries names
+    dict_path = os.path.join(os.path.dirname(__file__), "resources",
+                             "dictionaries")
 
     # Open the user interface if the needed dictioanrys and a Deepl Key could
     # be found
-    if check_for_dictionaries(dictionarys) and deepl_auth_key:
+    if check_for_dictionaries(dict_path) and deepl_auth_key:
         vocabulary_interface(deepl_auth_key)

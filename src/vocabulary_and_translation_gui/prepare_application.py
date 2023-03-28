@@ -11,24 +11,33 @@ import os
 from tkinter import messagebox
 
 
-def check_for_dictionaries(dicts=[]):
+def check_for_dictionaries(dictionaries_path=""):
     """Check if needed dictionarys for enchantment exist.
 
     Args:
-    - dicts (list): List of the dictionary tags
+    - dictionaries_path (str): the path to the file with the names of the
+    needed dictionaries
 
     Returns:
     - Boolean
     """
     # Check if dicts is a list
-    if not isinstance(dicts, list):
+    if not isinstance(dictionaries_path, str):
         messagebox.showerror(title="wrong datatype",
-                             message="'dictsÄ has to be a list.")
+                             message="'dictionaries_path has to be a string.")
         return
 
     # Check if there are values in dicts
-    if len(dicts) <= 0:
+    if len(dictionaries_path) <= 0:
         return False
+
+    # Get the dicitonaires from the file
+    dics_list = []
+    for dictionary in os.listdir(dictionaries_path):
+        dics_list.append(dictionary.split('.')[0])
+
+    dicts = list(dict.fromkeys(dics_list))
+
     # Create an empty list for the possible missing dictionary
     missing_dicts = []
 
