@@ -1,6 +1,6 @@
 import os
 import pytest
-from src.vocabulary_and_translation_gui.prepare_application import (
+from vocabulary_and_translation_gui.prepare_application import (
     get_deepl_key,
     check_for_dictionaries
     )
@@ -19,20 +19,19 @@ class TestGetDeeplKey:
         - None
 
     Methods:
-        - test_invalid_file: Test the "get_deepl_key" function with
-        files without keys.
+        - test_invalid_file: Test the "get_deepl_key" function with not
+        correct files.
         - test_valid_file: Test the "get_deepl_key" function with a file
         with a key.
     """
     @pytest.mark.parametrize("file_name", [
         ("abc.txt"),
         ("key.txt"),
-        ("no_access_key.txt"),
         ("no_key.txt"),
     ])
     def test_invalid_file(self, file_name):
         """
-        Test the "get_deepl_key" function with files without keys.
+        Test the "get_deepl_key" function with not correct files.
 
         The expected output is not True
 

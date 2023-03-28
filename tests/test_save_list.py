@@ -2,10 +2,10 @@ import datetime
 import os
 import pandas as pd
 import pytest
-from src.vocabulary_and_translation_gui.save_list import (
+from vocabulary_and_translation_gui.save_list import (
     save_list_as_apkg,
     save_list_as_xlsx
-)
+    )
 from unittest.mock import patch
 
 

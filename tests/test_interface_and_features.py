@@ -1,14 +1,24 @@
 import datetime
 import os
 import pytest
-from src.vocabulary_and_translation_gui.interface_and_features import (
+import tkinter as tk
+from vocabulary_and_translation_gui.interface_and_features import (
     handle_add_to_list,
     handle_save,
     handle_translate,
     vocabulary_interface
 )
-import tkinter as tk
+from vocabulary_and_translation_gui.prepare_application import (
+    get_deepl_key
+)
 from unittest.mock import patch
+
+
+@pytest.fixture(scope="session")
+def auth_key(pytestconfig):
+    """Get the path of the Deepl Key."""
+    path = pytestconfig.getoption("keypath")
+    return get_deepl_key(file_path=path)
 
 
 class TestHandleAddToList:

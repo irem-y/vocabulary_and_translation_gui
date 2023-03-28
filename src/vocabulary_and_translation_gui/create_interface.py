@@ -5,9 +5,11 @@ For the variable "key_path" add the path to your txt file, in which your
 Deepl Key is safed.
 """
 
-from interface_and_features import vocabulary_interface
+from vocabulary_and_translation_gui.interface_and_features import (
+    vocabulary_interface
+    )
 import os
-from prepare_application import (
+from vocabulary_and_translation_gui.prepare_application import (
     check_for_dictionaries,
     get_deepl_key
 )

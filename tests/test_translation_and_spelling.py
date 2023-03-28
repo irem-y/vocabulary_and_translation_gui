@@ -1,14 +1,13 @@
 import pytest
 from unittest.mock import patch
-
-from src.vocabulary_and_translation_gui.prepare_application import (
-    get_deepl_key
-)
-from src.vocabulary_and_translation_gui.translation_and_spelling import (
+from vocabulary_and_translation_gui.translation_and_spelling import (
     convert_language_name,
     check_spelling,
     correct_spelling_mistakes,
     translate_string
+)
+from vocabulary_and_translation_gui.prepare_application import (
+    get_deepl_key
 )
 
 
@@ -369,12 +368,12 @@ class TestTranslateString:
         Deepl Key.
     """
     @pytest.mark.parametrize("in_text, src_lang, tgt_lang, expected", [
-        ("Baum", "DE", "EN-GB", ("Tree", "DE")),
-        ("Fernseher", "DE", "TR", ("Televizyon", "DE")),
-        ("Televizyon", "TR", "EN-GB", ("Television", "TR")),
-        ("Ağaç", "TR", "DE", ("Baum", "TR")),
-        ("Tree", "EN", "DE", ("Baum", "EN")),
-        ("Television", "EN", "TR", ("Televizyon", "EN")),
+        ("Baum", "Deutsch", "English", ("Tree", "DE")),
+        ("Fernseher", "Deutsch", "Türkçe", ("Televizyon", "DE")),
+        ("Televizyon", "Türkçe", "English", ("Television", "TR")),
+        ("Ağaç", "Türkçe", "Deutsch", ("Baum", "TR")),
+        ("Tree", "English", "Deutsch", ("Baum", "EN")),
+        ("Television", "English", "Türkçe", ("Televizyon", "EN")),
     ])
     def test_valid_inputs(self, auth_key, in_text, src_lang, tgt_lang,
                           expected):
@@ -403,8 +402,8 @@ class TestTranslateString:
                                 src_lang="", tgt_lang=tgt_lang) == expected
 
     @pytest.mark.parametrize("in_text, src_lang, tgt_lang, error_msg", [
-        ("", "DE", "EN-GB", "No text to tranlsate were found."),
-        ("Tree", "EN", "abc", "Target Language is unknown."),
+        ("", "Deutsch", "English", "No text to tranlsate were found."),
+        ("Tree", "English", "abc", "Target Language is unknown."),
     ])
     def test_invalid_inputs(self, auth_key, in_text, src_lang, tgt_lang,
                             error_msg):
