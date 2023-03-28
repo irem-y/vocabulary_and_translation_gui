@@ -17,7 +17,8 @@ from vocabulary_and_translation_gui.prepare_application import (
 if __name__ == '__main__':
     # Path to Deepl Key file
     dirname = os.path.dirname(__file__)
-    key_path = os.path.join(dirname, 'DeeplKey.txt')
+    key_path = os.path.abspath(os.path.join(dirname, "resources",
+                                            'deepl_key.txt'))
 
     # Get a Deepl Key form key_path file, if possible
     deepl_auth_key = get_deepl_key(file_path=key_path)

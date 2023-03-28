@@ -23,7 +23,7 @@ def check_for_dictionaries(dicts=[]):
     # Check if dicts is a list
     if not isinstance(dicts, list):
         messagebox.showerror(title="wrong datatype",
-                             message="dicts has to be a list")
+                             message="'dictsÄ has to be a list.")
         return
 
     # Check if there are values in dicts
@@ -42,6 +42,13 @@ def check_for_dictionaries(dicts=[]):
     # If missing dictionaries are found, find the corerect destination path
     if len(missing_dicts) > 0:
 
+        # Get the path of the available dictionaries
+        dict_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                                 "resources",
+                                                 "dictionaries")
+                                    )
+
+        # Get the path of the relevant folder of the enchant library
         for entry in os.walk(os.path.dirname(enchant.__file__)):
             if r"share\enchant" in entry[0]:
                 dest_path = entry[0]
@@ -53,7 +60,9 @@ def check_for_dictionaries(dicts=[]):
         messages = {
             "dic": ("The following dictionarys:\n'"
                     + "', '".join(missing_dicts)
-                    + "'\nhas to be added to\n" + dest_path)
+                    + "'\nhas to be added to\n" + dest_path
+                    + "\n You can find the dictionaries here:\n"
+                    + dict_path)
         }
 
         # Give the user a warning message, to show which dictionarys are

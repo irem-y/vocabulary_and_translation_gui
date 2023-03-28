@@ -1,4 +1,0 @@
-# Here is my Deepl API Key
-# Please replace my key with your personal key or add it under my key
-# The last key will be used
-9cfd6476-2ae1-f9a3-40d7-f0586b4f789c:fx
