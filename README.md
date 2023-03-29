@@ -12,7 +12,9 @@ This application provides a graphical user interface (GUI) with translation and 
 
 You can enter an English, German or Turkish words or phrases into the interface.
 The application can then translate the word or phrase into your choice of English, German or Turkish. 
-You can also add the phrase to a vocabulary list and then save the list as an Excel file or Anki file.<br /><br />
+You can also add the phrase to a vocabulary list and then save the list as an Excel file or Anki file.
+
+I developed and tested the code on Microsoft Windows 10.<br /><br />
 
 ## Preperation
 
@@ -70,10 +72,10 @@ To open the GUI run the file `create_interface.py`. It can be found [here](src/v
 
 The GUI has a field where you can enter your phrase expression. The <b>Source language</b> drop-down menu allows you to select the language of the word you have entered, or to have the language automatically detected. The <b>Target Language</b> drop-down menu allows you to select the target language.
 
-The <b>Translate</b> button will translate the word or phrase you have entered into the target language. The application will also check the spelling of the phrase entered if a source language is given.
-The <b>Add to vocabulary list</b> button allows you to add the entered phrase to a list. To save this list, press the <b>Save vocabulary list</b> button. After pressing the button, you can choose where you want to save the list and whether you want to save it as an Anki or Excel file.
+The <b>'Translate'</b> button will translate the word or phrase you have entered into the target language. The application will also check the spelling of the phrase entered if a source language is given.
+The <b>'Add to vocabulary list'</b> button allows you to add the entered phrase to a list and also checks for spelling mistakes. To save this list, press the <b>'Save vocabulary list'</b> button. After pressing the button, you can choose where you want to save the list and whether you want to save it as an Anki or Excel file.
 
-To close the window press [x] in the top corner of the interface or th <b>Quit</b> button.
+To close the window press [x] in the top corner of the interface or th <b>'Quit'</b> button.
 
 ## Testing
 To perform a unit test on the functions used, run pytest:

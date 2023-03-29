@@ -152,3 +152,12 @@ dist
 .pytask
 _version.py
 bld
+
+# Latex produced files
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.pdf
+*.synctex.gz
+*.toc
