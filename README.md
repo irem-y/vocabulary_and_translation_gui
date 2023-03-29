@@ -57,9 +57,7 @@ The last task will create the GUI. You can already use it here, but if you run p
 
 If a message box appears during this process, follow the instructions in the message. 
 
-During this process the text files `dicts_ckeck_result.txt`, `key_ckeck_result.txt` and `pytest_ckeck_result.txt` are created. 
-
-Check these files [here](BLD) to see if there are any problems.
+The tasks check if a DeepL key and all required language directories are available. One task also performs a unit test with pytest for all functions and one creates the documentation PDF in the <b>docs</b> folder. The last task tries to build the GUI.
 
 A message box may appear saying that not all of the required dictionaries are included in the enchant package. 
 To add the dictionaries follow the instructions in the message box. The required dictionaries can be found [here](src/vocabulary_and_translation_gui/resources/dictionaries).

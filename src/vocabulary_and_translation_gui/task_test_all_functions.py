@@ -8,7 +8,6 @@ tested. If a new function or test function is created, add the file name here.
 import os
 import pytask
 import pytest
-from vocabulary_and_translation_gui.config import BLD
 
 # Path and name of functions that are tested
 function_path = os.path.dirname(__file__)
@@ -37,25 +36,22 @@ for test_function in test_names:
     dependencies.append(os.path.join(test_path, test_function))
 
 
-@pytask.mark.produces(BLD / "pytest_check_result.txt")
 @pytask.mark.depends_on(dependencies)
-def task_test_all_functions(produces):
+def task_test_all_functions():
     """
     Run pytest for all tests files in vocabulary_and _translating_gui/tests.
 
     Args:
-    - produces (path): path for the output file
+    - None
 
     Returns:
     - None
+
+    Raises:
+    - RuntimeError: If a test fails
     """
     dirname = os.path.dirname(__file__)
     full_dir_name = os.path.abspath(os.path.join(dirname, "..", "..", "tests"))
-    if pytest.main([full_dir_name]) == 0:
-        msg = "Success!\nAll test were successful."
-    else:
-        msg = ("Failure!\nThere was an error during the tests.\nRun pytest in"
-               + "the command line to see the errors.")
-
-    with open(produces, 'w') as f:
-        f.write(msg)
+    if pytest.main([full_dir_name]) != 0:
+        raise RuntimeError("Pytest was not successful. Run pytest in the"
+                           + "command line to see the errors.")

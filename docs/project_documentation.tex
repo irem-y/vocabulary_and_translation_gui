@@ -4,12 +4,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb, amsfonts, amsthm, bm, delarray}
 \usepackage{caption}
-\usepackage{graphicx}
-\graphicspath{ {./images/} }
+\usepackage{listings}
+\usepackage{parskip}
 \usepackage[unicode=true]{hyperref}
 \hypersetup{colorlinks=true, linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black, menucolor=black, runcolor=black, urlcolor=black}
 \setlength{\parskip}{.5ex}
 \setlength{\parindent}{0ex}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+\renewcommand{\theenumi}{\roman{enumi}}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 
 \begin{document}
 
@@ -50,14 +57,27 @@
     Here is a picture of the GUI:\@
     \begin{figure}[h]
         \caption{Graphical User Interface}
-        \includegraphics{GUI_screenshot}
+        \includegraphics{GUI_screenshot.PNG}
     \end{figure}\\  
     The GUI allows you to translate words directly using the \emph{'Translate'} button, or add them to a list using the the \emph{'Add to vocabulary list'} button.
     The list can then be saved using the \emph{'Save vocabulary list'} button.
     The user can then choose where to save the file and in what format, as an Excel or Anki file.
     
     \newpage
-    
+
+    \section{Pytask}
+
+    I have created five tasks:
+    \begin{enumerate}
+        \item task\_get\_key: This task checks if in the given file a DeepL key is available.
+        \item task\_check\_dictionaries: This task checks if all required dictionaries are available.
+        \item task\_compile\_latex\_document: This task compiles the LaTex documentation file and creates a PDF.
+        \item task\_test\_all\_functions: This task performs a unit test for all funcitons wit pytest.
+        \item task\_create\_user\_interface: This task checks if the user interface can be created.
+    \end{enumerate}
+
+    \newpage
+
     \section{Remarks}
     
     I have written and tested the code on Microsoft Windows 10. Other operating systems may cause problems.\\\\

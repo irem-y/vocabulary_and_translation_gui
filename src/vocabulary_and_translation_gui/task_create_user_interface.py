@@ -29,6 +29,9 @@ def task_create_user_interface():
 
     Returns:
     - None
+
+    Raises:
+    - RuntimeError: If the interface could not be created.
     """
     # Path to DeepL Key file
     dirname = os.path.dirname(__file__)
@@ -45,4 +48,8 @@ def task_create_user_interface():
     # Open the user interface if the needed dictionaries and a DeepL Key could
     # be found
     if check_for_dictionaries(dict_path) and deepl_auth_key:
-        vocabulary_interface(deepl_auth_key)
+        try:
+            vocabulary_interface(deepl_auth_key)
+        except Exception:
+            raise RuntimeError("The interface could not be created "
+                               + "successfully.")
