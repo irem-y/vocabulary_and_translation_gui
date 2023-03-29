@@ -5,7 +5,7 @@ For the variable "key_path" add the path to your txt file, in which your
 DeepL Key is saved.
 """
 
-from vocabulary_and_translation_gui.config import BLD
+
 import pytask
 from vocabulary_and_translation_gui.interface_and_features import (
     vocabulary_interface
@@ -17,9 +17,19 @@ from vocabulary_and_translation_gui.prepare_application import (
 )
 
 
-@pytask.mark.depends_on(BLD)
 @pytask.mark.try_last
 def task_create_user_interface():
+    """
+    Create the vocabulary and translation user interface.
+
+    Runs if a DeepL Key and all needed dictionaries are available.
+
+    Args:
+    - None
+
+    Returns:
+    - None
+    """
     # Path to DeepL Key file
     dirname = os.path.dirname(__file__)
     key_path = os.path.abspath(os.path.join(dirname, "resources",
